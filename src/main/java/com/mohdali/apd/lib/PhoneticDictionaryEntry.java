@@ -1,11 +1,9 @@
 package com.mohdali.apd.lib;
 
 import java.util.ArrayList;
-import java.util.SortedSet;
+
 import java.util.Map;
 import java.util.Map.Entry;
-
-import java.util.regex.Pattern;
 
 public class PhoneticDictionaryEntry implements Comparable<PhoneticDictionaryEntry>{
     private String key;

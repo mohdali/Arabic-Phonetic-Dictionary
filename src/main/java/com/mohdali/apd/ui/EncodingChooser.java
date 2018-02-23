@@ -10,6 +10,7 @@ package com.mohdali.apd.ui;
  *
  * @author  Ali
  */
+@SuppressWarnings("serial")
 public class EncodingChooser extends javax.swing.JPanel {
     
     /** Creates new form EncodingChooser */
@@ -25,11 +26,11 @@ public class EncodingChooser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox1 = new javax.swing.JComboBox<String>();
 
         jLabel1.setText("Encoding:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "cp1256", "iso8859-6", "UTF-8" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "cp1256", "iso8859-6", "UTF-8" }));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -57,7 +58,7 @@ public class EncodingChooser extends javax.swing.JPanel {
         return (String) jComboBox1.getSelectedItem();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     

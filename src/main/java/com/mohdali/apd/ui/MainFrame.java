@@ -6,9 +6,7 @@
 
 package com.mohdali.apd.ui;
 
-import com.sun.jmx.remote.util.EnvHelp;
 import com.mohdali.apd.lib.*;
-import java.util.Set;
 import java.util.Map;
 import java.util.ArrayList;
 
@@ -16,19 +14,20 @@ import java.util.ArrayList;
  *
  * @author  Ali
  */
+@SuppressWarnings("serial")
 public class MainFrame extends javax.swing.JFrame {
-    
+
     /** Creates new form MainFrame */
     public MainFrame() {
-	initComponents();
+        initComponents();
         //this.applyComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
-        VisualListener e=new VisualListener(this);
+        VisualListener e = new VisualListener(this);
         Main.loadConfig();
         Main.statusEvent.addListener(e);
         Main.progressEvent.addListener(e);
         Main.updateEvent.addListener(new DictionaryUpdateListener(this));
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -46,7 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         dictionarySearchField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        dictionaryList = new javax.swing.JList();
+        dictionaryList = new javax.swing.JList<String>();
         setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
         jPanel2 = new javax.swing.JPanel();
         dictionaryEntryField = new javax.swing.JTextField();
@@ -78,59 +77,66 @@ public class MainFrame extends javax.swing.JFrame {
         loadFiles.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
         loadFiles.setMultiSelectionEnabled(true);
 
-        org.jdesktop.layout.GroupLayout buildDictionaryDialogLayout = new org.jdesktop.layout.GroupLayout(buildDictionaryDialog.getContentPane());
+        org.jdesktop.layout.GroupLayout buildDictionaryDialogLayout = new org.jdesktop.layout.GroupLayout(
+                buildDictionaryDialog.getContentPane());
         buildDictionaryDialog.getContentPane().setLayout(buildDictionaryDialogLayout);
-        buildDictionaryDialogLayout.setHorizontalGroup(
-            buildDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(buildDictionaryDialogLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(loadFiles, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(585, Short.MAX_VALUE))
-        );
-        buildDictionaryDialogLayout.setVerticalGroup(
-            buildDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(buildDictionaryDialogLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(loadFiles, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
+        buildDictionaryDialogLayout.setHorizontalGroup(buildDictionaryDialogLayout
+                .createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(buildDictionaryDialogLayout.createSequentialGroup().addContainerGap()
+                        .add(loadFiles, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(585, Short.MAX_VALUE)));
+        buildDictionaryDialogLayout.setVerticalGroup(buildDictionaryDialogLayout
+                .createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(buildDictionaryDialogLayout.createSequentialGroup().addContainerGap()
+                        .add(loadFiles, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(39, Short.MAX_VALUE)));
         saveDictionaryDialog.setModal(true);
         saveDictionary.setAccessory(new EncodingChooser());
         saveDictionary.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
 
-        org.jdesktop.layout.GroupLayout saveDictionaryDialogLayout = new org.jdesktop.layout.GroupLayout(saveDictionaryDialog.getContentPane());
+        org.jdesktop.layout.GroupLayout saveDictionaryDialogLayout = new org.jdesktop.layout.GroupLayout(
+                saveDictionaryDialog.getContentPane());
         saveDictionaryDialog.getContentPane().setLayout(saveDictionaryDialogLayout);
         saveDictionaryDialogLayout.setHorizontalGroup(
-            saveDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, saveDictionaryDialogLayout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(saveDictionary, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+                saveDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(
+                        org.jdesktop.layout.GroupLayout.TRAILING,
+                        saveDictionaryDialogLayout.createSequentialGroup()
+                                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(saveDictionary, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap()));
         saveDictionaryDialogLayout.setVerticalGroup(
-            saveDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, saveDictionaryDialogLayout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(saveDictionary, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-        );
+                saveDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(
+                        org.jdesktop.layout.GroupLayout.TRAILING,
+                        saveDictionaryDialogLayout.createSequentialGroup()
+                                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(saveDictionary, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)));
         loadDictionary.setAccessory(new EncodingChooser());
 
-        org.jdesktop.layout.GroupLayout loadDictionaryDialogLayout = new org.jdesktop.layout.GroupLayout(loadDictionaryDialog.getContentPane());
+        org.jdesktop.layout.GroupLayout loadDictionaryDialogLayout = new org.jdesktop.layout.GroupLayout(
+                loadDictionaryDialog.getContentPane());
         loadDictionaryDialog.getContentPane().setLayout(loadDictionaryDialogLayout);
         loadDictionaryDialogLayout.setHorizontalGroup(
-            loadDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(loadDictionaryDialogLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(loadDictionary, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                loadDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(loadDictionaryDialogLayout.createSequentialGroup().addContainerGap()
+                                .add(loadDictionary, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         loadDictionaryDialogLayout.setVerticalGroup(
-            loadDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(loadDictionaryDialogLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(loadDictionary, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                loadDictionaryDialogLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(loadDictionaryDialogLayout.createSequentialGroup().addContainerGap()
+                                .add(loadDictionary, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -154,24 +160,22 @@ public class MainFrame extends javax.swing.JFrame {
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, dictionarySearchField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(dictionarySearchField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel1Layout.createSequentialGroup().addContainerGap()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane1,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                .add(org.jdesktop.layout.GroupLayout.TRAILING, dictionarySearchField,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                        .addContainerGap()));
+        jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel1Layout.createSequentialGroup().addContainerGap()
+                        .add(dictionarySearchField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                        .addContainerGap()));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Entry"));
         dictionaryEntryField.setEnabled(false);
@@ -190,36 +194,30 @@ public class MainFrame extends javax.swing.JFrame {
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(19, 19, 19)
-                        .add(saveButton))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(generateDefsButton)
-                        .add(4, 4, 4)
-                        .add(dictionaryEntryField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 219, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(dictionaryEntryField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(generateDefsButton))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 144, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(saveButton)
-                .addContainerGap(115, Short.MAX_VALUE))
-        );
+        jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel2Layout.createSequentialGroup()
+                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                .add(jPanel2Layout.createSequentialGroup().addContainerGap().add(jScrollPane2,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE))
+                                .add(jPanel2Layout.createSequentialGroup().add(19, 19, 19).add(saveButton))
+                                .add(org.jdesktop.layout.GroupLayout.TRAILING,
+                                        jPanel2Layout.createSequentialGroup().addContainerGap().add(generateDefsButton)
+                                                .add(4, 4, 4).add(dictionaryEntryField,
+                                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 219,
+                                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()));
+        jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel2Layout.createSequentialGroup().addContainerGap()
+                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                .add(dictionaryEntryField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(generateDefsButton))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 144,
+                                org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED).add(saveButton)
+                        .addContainerGap(115, Short.MAX_VALUE)));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         progressBar.setVisible(false);
@@ -229,28 +227,28 @@ public class MainFrame extends javax.swing.JFrame {
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(statusLabel)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 368, Short.MAX_VALUE)
-                .add(progressBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(progressBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(statusLabel))
-                .addContainerGap())
-        );
+        jPanel3Layout.setHorizontalGroup(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(
+                org.jdesktop.layout.GroupLayout.TRAILING,
+                jPanel3Layout.createSequentialGroup().addContainerGap().add(statusLabel)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 368, Short.MAX_VALUE)
+                        .add(progressBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 173,
+                                org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()));
+        jPanel3Layout
+                .setVerticalGroup(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                        .add(progressBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                                org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                                org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(statusLabel))
+                                .addContainerGap()));
 
         fileMenu.setMnemonic('F');
         fileMenu.setText("File");
-        newDictionaryItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        newDictionaryItem.setAccelerator(
+                javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         newDictionaryItem.setMnemonic('N');
         newDictionaryItem.setText("New Dictionary");
         newDictionaryItem.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +259,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         fileMenu.add(newDictionaryItem);
 
-        openDictionaryItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        openDictionaryItem.setAccelerator(
+                javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         openDictionaryItem.setMnemonic('O');
         openDictionaryItem.setText("Open Dicitonary");
         openDictionaryItem.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +271,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         fileMenu.add(openDictionaryItem);
 
-        saveDictionaryItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        saveDictionaryItem.setAccelerator(
+                javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         saveDictionaryItem.setMnemonic('S');
         saveDictionaryItem.setText("Save Dictionary");
         saveDictionaryItem.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +285,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         fileMenu.add(jSeparator2);
 
-        importFilesItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        importFilesItem.setAccelerator(
+                javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         importFilesItem.setMnemonic('I');
         importFilesItem.setText("Import Files");
         importFilesItem.setToolTipText("");
@@ -298,7 +299,8 @@ public class MainFrame extends javax.swing.JFrame {
         fileMenu.add(importFilesItem);
         importFilesItem.getAccessibleContext().setAccessibleParent(this);
 
-        importDictionaryItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        importDictionaryItem.setAccelerator(
+                javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         importDictionaryItem.setMnemonic('D');
         importDictionaryItem.setText("Import Dictionary");
         importDictionaryItem.setToolTipText("Merge a previousely created dictionary with the current one");
@@ -324,12 +326,14 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(fileMenu);
 
         editMenu.setText("Edit");
-        addEntryItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        addEntryItem.setAccelerator(
+                javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         addEntryItem.setMnemonic('A');
         addEntryItem.setText("Add Entry");
         editMenu.add(addEntryItem);
 
-        editEntryItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        editEntryItem.setAccelerator(
+                javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         editEntryItem.setMnemonic('E');
         editEntryItem.setText("Edit Entry");
         editMenu.add(editEntryItem);
@@ -345,161 +349,162 @@ public class MainFrame extends javax.swing.JFrame {
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
+        layout.setHorizontalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(layout.createSequentialGroup().addContainerGap()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING,
+                                        layout.createSequentialGroup()
+                                                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED).add(jPanel2,
+                                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                                        org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()));
+        layout.setVerticalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(layout
+                .createSequentialGroup().addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                                org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE,
+                                org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE,
+                        org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE)));
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void openDictionaryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openDictionaryItemActionPerformed
-// TODO add your handling code here:
-        Map dict=(Map)ConfigManager.getProperty("Dictionary");
-        if(!dict.isEmpty() && !isSaved){
-            int val=javax.swing.JOptionPane.showOptionDialog(this,
-               "Current Dictionary not saved. Do you want to save?","Warning",
-               javax.swing.JOptionPane.YES_NO_CANCEL_OPTION,
-               javax.swing.JOptionPane.QUESTION_MESSAGE,
-               null,
-               null,
-               null);
-            if(val==javax.swing.JOptionPane.YES_OPTION){
+
+        Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) ConfigManager.getProperty("Dictionary");
+        if (!dict.isEmpty() && !isSaved) {
+            int val = javax.swing.JOptionPane.showOptionDialog(this,
+                    "Current Dictionary not saved. Do you want to save?", "Warning",
+                    javax.swing.JOptionPane.YES_NO_CANCEL_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE, null, null,
+                    null);
+            if (val == javax.swing.JOptionPane.YES_OPTION) {
                 saveDictionary();
-            }else if(val==javax.swing.JOptionPane.CANCEL_OPTION){
+            } else if (val == javax.swing.JOptionPane.CANCEL_OPTION) {
                 return;
             }
         }
         Main.clearDict();
-        int value=loadDictionary.showOpenDialog(loadDictionaryDialog);
+        int value = loadDictionary.showOpenDialog(loadDictionaryDialog);
         final String encoding = ((EncodingChooser) loadDictionary.getAccessory()).getChoice();
-        if(value==javax.swing.JFileChooser.APPROVE_OPTION){
-            new Thread(new Runnable(){
-                public void run(){
-                        Main.readDict(loadDictionary.getSelectedFile(),encoding);                   
+        if (value == javax.swing.JFileChooser.APPROVE_OPTION) {
+            new Thread(new Runnable() {
+                public void run() {
+                    Main.readDict(loadDictionary.getSelectedFile(), encoding);
                 }
             }).start();
-        }        
+        }
     }//GEN-LAST:event_openDictionaryItemActionPerformed
 
     private void newDictionaryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDictionaryItemActionPerformed
-// TODO add your handling code here:
-        Map dict=(Map) ConfigManager.getProperty("Dictionary");
-        if(!dict.isEmpty() && !isSaved){
-            int val=javax.swing.JOptionPane.showOptionDialog(this,
-               "Current Dictionary not saved. Do you want to save?","Warning",
-               javax.swing.JOptionPane.YES_NO_CANCEL_OPTION,
-               javax.swing.JOptionPane.QUESTION_MESSAGE,
-               null,
-               null,
-               null);
-            if(val==javax.swing.JOptionPane.YES_OPTION){
+        
+        Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) ConfigManager.getProperty("Dictionary");
+        if (!dict.isEmpty() && !isSaved) {
+            int val = javax.swing.JOptionPane.showOptionDialog(this,
+                    "Current Dictionary not saved. Do you want to save?", "Warning",
+                    javax.swing.JOptionPane.YES_NO_CANCEL_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE, null, null,
+                    null);
+            if (val == javax.swing.JOptionPane.YES_OPTION) {
                 saveDictionary();
-            }else if(val==javax.swing.JOptionPane.CANCEL_OPTION){
+            } else if (val == javax.swing.JOptionPane.CANCEL_OPTION) {
                 return;
             }
         }
         Main.clearDict();
-        Main.updateList();        
+        Main.updateList();
     }//GEN-LAST:event_newDictionaryItemActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-// TODO add your handling code here:
-       Main.stopThreads=true;
-       /*javax.swing.JOptionPane.showOptionDialog(this,
+        
+        Main.stopThreads = true;
+        /*javax.swing.JOptionPane.showOptionDialog(this,
                "Do you want to save?","Warning",
                javax.swing.JOptionPane.YES_NO_CANCEL_OPTION,
                javax.swing.JOptionPane.QUESTION_MESSAGE,
                null,
                null,
                null);*/
-       
+
     }//GEN-LAST:event_formWindowClosing
 
     private void dictionaryListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_dictionaryListValueChanged
-// TODO add your handling code here:
-        if(dictionaryList.getSelectedIndex()!= -1){
-            String key=(String) dictionaryList.getSelectedValue();
+
+        if (dictionaryList.getSelectedIndex() != -1) {
+            String key = dictionaryList.getSelectedValue();
             dictionaryEntryField.setText(key);
-            Map<String,PhoneticDictionaryEntry> dict= (Map<String,PhoneticDictionaryEntry>)ConfigManager.getProperty("Dictionary");
+            Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) ConfigManager
+                    .getProperty("Dictionary");
             PhoneticDictionaryEntry e = dict.get(key);
-            ArrayList<String> list =e.getDefs();
+            ArrayList<String> list = e.getDefs();
             entryDefField.setText("");
-            for(String def:list){
-                entryDefField.setText(entryDefField.getText()+def+"\n");
+            for (String def : list) {
+                entryDefField.setText(entryDefField.getText() + def + "\n");
             }
         }
-        
+
     }//GEN-LAST:event_dictionaryListValueChanged
 
     private void importDictionaryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importDictionaryItemActionPerformed
-// TODO add your handling code here:
-        int value=loadDictionary.showOpenDialog(loadDictionaryDialog);
+        
+        int value = loadDictionary.showOpenDialog(loadDictionaryDialog);
         final String encoding = ((EncodingChooser) loadDictionary.getAccessory()).getChoice();
-        if(value==javax.swing.JFileChooser.APPROVE_OPTION){
-            new Thread(new Runnable(){
-                public void run(){
-                        Main.readDict(loadDictionary.getSelectedFile(),encoding);                   
+        if (value == javax.swing.JFileChooser.APPROVE_OPTION) {
+            new Thread(new Runnable() {
+                public void run() {
+                    Main.readDict(loadDictionary.getSelectedFile(), encoding);
                 }
             }).start();
         }
     }//GEN-LAST:event_importDictionaryItemActionPerformed
 
     private void closeItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeItemActionPerformed
-// TODO add your handling code here:
+        
         this.dispose();
     }//GEN-LAST:event_closeItemActionPerformed
 
     private void saveDictionaryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveDictionaryItemActionPerformed
-// TODO add your handling code here:
+        
         saveDictionary();
     }//GEN-LAST:event_saveDictionaryItemActionPerformed
-           
+
     private void importFilesItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importFilesItemActionPerformed
-// TODO add your handling code here:
-        int value=loadFiles.showOpenDialog(buildDictionaryDialog);
+        
+        int value = loadFiles.showOpenDialog(buildDictionaryDialog);
         final String encoding = ((EncodingChooser) loadFiles.getAccessory()).getChoice();
-        if(value==javax.swing.JFileChooser.APPROVE_OPTION){
-            new Thread(new Runnable(){
-                public void run(){
-                   for(java.io.File f: loadFiles.getSelectedFiles()){
-                        Main.importFiles(f,encoding);
-                   }
+        if (value == javax.swing.JFileChooser.APPROVE_OPTION) {
+            new Thread(new Runnable() {
+                public void run() {
+                    for (java.io.File f : loadFiles.getSelectedFiles()) {
+                        Main.importFiles(f, encoding);
+                    }
                 }
             }).start();
         }
     }//GEN-LAST:event_importFilesItemActionPerformed
-    
-    private void saveDictionary(){
-        int value=saveDictionary.showSaveDialog(saveDictionaryDialog);
+
+    private void saveDictionary() {
+        int value = saveDictionary.showSaveDialog(saveDictionaryDialog);
         final String encoding = ((EncodingChooser) saveDictionary.getAccessory()).getChoice();
-        if(value==javax.swing.JFileChooser.APPROVE_OPTION){
-            new Thread(new Runnable(){
-                public void run(){
-                   Main.writeDict(saveDictionary.getSelectedFile(),encoding);
+        if (value == javax.swing.JFileChooser.APPROVE_OPTION) {
+            new Thread(new Runnable() {
+                public void run() {
+                    Main.writeDict(saveDictionary.getSelectedFile(), encoding);
                 }
             }).start();
-        }        
-        
+        }
+
     }
+
     /**
      * @param args the command line arguments
      */
@@ -508,16 +513,17 @@ public class MainFrame extends javax.swing.JFrame {
             public void run() {
                 new MainFrame().setVisible(true);
             }
-        });       
+        });
     }
-    private boolean isSaved=true;
+
+    private boolean isSaved = true;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addEntryItem;
     private javax.swing.JDialog buildDictionaryDialog;
     private javax.swing.JMenuItem closeItem;
     private javax.swing.JMenuItem deleteEntryItem;
     public javax.swing.JTextField dictionaryEntryField;
-    public javax.swing.JList dictionaryList;
+    public javax.swing.JList<String> dictionaryList;
     private javax.swing.JTextField dictionarySearchField;
     private javax.swing.JMenuItem editEntryItem;
     private javax.swing.JMenu editMenu;
@@ -546,7 +552,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem saveDictionaryItem;
     public javax.swing.JLabel statusLabel;
     // End of variables declaration//GEN-END:variables
-    
+
 }
-
-

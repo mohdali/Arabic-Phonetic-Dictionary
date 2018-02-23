@@ -1,14 +1,10 @@
 package com.mohdali.apd.lib;
 
-import java.util.SortedSet;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.TreeMap;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.FileInputStream;
@@ -23,7 +19,6 @@ import java.util.regex.Matcher;
 public class Main {
     private static Map<String, PhoneticDictionaryEntry> dict;
     private static Pattern pattern;
-    private static int count;
     public static StatusEvent statusEvent = new StatusEvent();
     public static ProgressEvent progressEvent = new ProgressEvent();
     public static UpdateEvent updateEvent = new UpdateEvent();
@@ -80,6 +75,7 @@ public class Main {
                 }
                 str = reader.readLine();
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -94,7 +90,7 @@ public class Main {
             Map<String, String> classes = (Map<String, String>) ConfigManager.getProperty("Classes");
             Pattern p = Pattern
                     .compile("^([" + classes.get("D") + classes.get("L") + "]+)(?:\\([0-9]{1,2}\\))?[ \t]+(.*)$");
-            int count = 0;
+
             while (str != null) {
                 Matcher matcher = p.matcher(str);
                 while (matcher.find()) {
@@ -109,6 +105,7 @@ public class Main {
                 }
                 str = reader.readLine();
             }
+            reader.close();
             statusEvent.fire("Done, loaded " + dict.size() + " entries");
             updateEvent.fire();
         } catch (IOException e) {
