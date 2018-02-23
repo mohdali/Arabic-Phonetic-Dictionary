@@ -9,11 +9,11 @@
 
 package com.mohdali.apd.ui;
 
+import com.mohdali.apd.lib.PhoneticDictionaryEntry;
 import java.util.Map;
 
 import javax.swing.ListModel;
 
-import com.mohdali.apd.lib.*;
 
 /**
  *

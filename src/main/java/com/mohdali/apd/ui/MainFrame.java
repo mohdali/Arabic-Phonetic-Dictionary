@@ -6,8 +6,10 @@
 
 package com.mohdali.apd.ui;
 
-import com.mohdali.apd.lib.*;
 import java.util.Map;
+import com.mohdali.apd.lib.ConfigManager;
+import com.mohdali.apd.lib.Main;
+import com.mohdali.apd.lib.PhoneticDictionaryEntry;
 import java.util.ArrayList;
 
 /**
