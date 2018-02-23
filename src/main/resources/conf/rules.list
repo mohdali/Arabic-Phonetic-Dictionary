@@ -1,0 +1,131 @@
+HAMZA:
+	.-> E
+ALEF_WITH_MADDA_ABOVE:
+	.(?!FATHA)-> E AE:
+	.(?=FATHA)-> E
+ALEF_WITH_HAMZA_ABOVE:
+	.-> E
+WAW_WITH_HAMZA_ABOVE:
+	.-> E
+ALEF_WITH_HAMZA_BELOW:
+	.-> E
+	.(?!KASRA|KASRATAN)-> E IH
+YEH_WITH_HAMZA_ABOVE:
+	.-> E
+ALEF:
+	(?<=^).-> E
+	.-> *
+BEH:
+	.-> B
+TEH_MARBUTA:
+	.(?=<T>)-> H
+	.-> T
+TEH:
+	.-> T
+THEH:
+	.-> TH
+	;.-> S
+JEEM:
+	.-> JH
+	;.-> G
+	;.-> ZH
+HAH:
+	.-> HH
+KHAH:
+	.-> KH
+DAL:
+	.(?=TEH<V>)-> *
+	.(?!TEH<V>)-> D
+THAL:
+	.-> DH
+	;.-> Z
+REH:
+	.-> R
+ZAIN:
+	.-> Z
+SEEN:
+	.-> S
+SHEEN:
+	.-> SH
+SAD:
+	.-> SS
+DAD:
+	.(?=(TEH|TAH)<V>)-> *
+	.(?!(TEH|TAH)<V>)-> DD
+TAH:
+	.-> TT
+ZAH:
+	.-> DH2
+	;.-> Z
+AIN:
+	.-> AI
+GHAIN:
+	.-> GH
+TATWEEL:
+	.-> *
+FEH:
+	.-> F
+QAF:
+	.-> Q
+	;.-> G
+	;.-> GH
+	;.-> E
+KAF:
+	.-> K
+LAM:
+	(?<=(<P><V>)?ALEF FATHA?).(?= <SH>)-> *
+	.-> L
+MEEM:
+	.-> M
+NOON:
+	.(?= BEH)-> M
+	.-> N
+HEH:
+	.-> H
+WAW:
+	(?<=(FATHA|DAMMA)).(?!<V>)-> *
+	(?<=(FATHA|DAMMA)).(?=<V>)-> W
+	(?<!(FATHA|DAMMA)).-> W
+ALEF_MAKSURA:
+	.-> *
+YEH:
+	(?<=(FATHA|KASRA)).(?!<V>)-> *
+	(?<=(FATHA|KASRA)).(?=<V>)-> Y
+	(?<!(FATHA|KASRA)).-> Y	
+FATHATAN:
+	(?<!<E>|<PH>).-> AE N
+	(?<=<E>).-> AH N
+	(?<=<PH>).-> AA N
+DAMMATAN:
+	(?<!<PH>).-> UH N
+	(?<=<PH>).-> UX N
+KASRATAN:
+	(?<!<PH>).-> IH N
+	(?<=<PH>).-> IX N
+FATHA:
+	(?<!<E>|<PH>).(?!ALEF|((WAW|YEH)(<L>|<T>)))-> AE
+	(?<!<E>|<PH>).(?=ALEF)-> AE:
+	(?<=ALEF_WITH_MADDA_ABOVE).-> AE:
+	(?<=<E>).(?!ALEF|((WAW|YEH)(<L>|<T>)))-> AH
+	(?<=<E>).(?=ALEF)-> AH:
+	(?<=<PH>).(?!ALEF|((WAW|YEH)(<L>|<T>)))-> AA
+	(?<=<PH>).(?=ALEF)-> AA:
+	.(?=WAW (<L>|<T>))-> AW
+	.(?=YEH (<L>|<T>))-> AY
+DAMMA:
+	(?<!<PH>).(?!WAW)-> UH
+	(?<=<PH>).(?!WAW)-> UX
+	(?<!<PH>).(?=WAW<V>)-> UH
+	(?<=<PH>).(?=WAW<V>)-> UX
+	.(?=WAW(<L>|<T>))-> UW
+KASRA:
+	(?<!<PH>).(?!YEH)-> IH
+	(?<=<PH>).(?!YEH)-> IX
+	(?<!<PH>).(?=YEH<V>)-> IH
+	(?<=<PH>).(?=YEH<V>)-> IX
+	(?<!<PH>).(?=YEH (<L>|<T>))-> IY
+        (?<=<PH>).(?=YEH (<L>|<T>))-> IX:
+SHADDA:
+	.-> *
+SUKUN:
+	.-> *
