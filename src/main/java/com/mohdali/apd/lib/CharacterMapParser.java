@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class CharacterMap{
+public class CharacterMapParser{
     
     private static Map<String,Character> map= new HashMap<String,Character>();
     private static Pattern pattern = Pattern.compile("^[ \\t]*([A-Z_]+)[ \\t]+0x([0-9a-f]+)$");
@@ -22,7 +22,7 @@ public class CharacterMap{
         return map;
     }
 
-    public static void parseFile(InputStream fin){
+    private static void parseFile(InputStream fin){
         try{
             BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
             String str=reader.readLine();

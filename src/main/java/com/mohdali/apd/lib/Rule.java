@@ -16,22 +16,21 @@ import java.util.regex.Matcher;
  *
  * @author Ali
  */
-public class Rule
-{
+public class Rule {
     public Pattern cond;
     public String replacement;
 
-    public Rule(Pattern cond, String rep){
-        this.cond=cond;
-        this.replacement=rep;
+    public Rule(Pattern cond, String rep) {
+        this.cond = cond;
+        this.replacement = rep;
     }
 
-    public boolean applies(String str,int index){
-        Matcher matcher=cond.matcher(str);
+    public boolean applies(String str, int index) {
+        Matcher matcher = cond.matcher(str);
         return matcher.find(index) && (matcher.start() == index);
     }
 
-    public String toString(){
-        return cond.pattern()+"\t"+replacement+"\n";
+    public String toString() {
+        return cond.pattern() + "\t" + replacement + "\n";
     }
 }

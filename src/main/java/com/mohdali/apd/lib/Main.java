@@ -43,12 +43,12 @@ public class Main {
     }
 
     public static void loadConfig() {
-        Map<String, Character> map = CharacterMap.get();
+        Map<String, Character> map = CharacterMapParser.get();
         ConfigManager.setProperty("CharMap", map);
-        Map<String, String> classes = CharacterClasses.get();
+        Map<String, String> classes = CharacterClassesParser.get();
         pattern = Pattern.compile("(" + classes.get("D") + "|" + classes.get("L") + ")+");
         ConfigManager.setProperty("Classes", classes);
-        Map<String, ArrayList<Rule>> rules = Rules.get();
+        Map<String, ArrayList<Rule>> rules = RuleParser.get();
         ConfigManager.setProperty("Rules", rules);
         dict = new TreeMap<String, PhoneticDictionaryEntry>();
         ConfigManager.setProperty("Dictionary", dict);

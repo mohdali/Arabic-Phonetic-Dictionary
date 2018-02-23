@@ -16,17 +16,18 @@ import java.util.ArrayList;
  */
 public class StatusEvent {
     private ArrayList<StatusEventListener> listeners;
+
     /** Creates a new instance of StatusEvent */
     public StatusEvent() {
-        listeners=new ArrayList<StatusEventListener>();
+        listeners = new ArrayList<StatusEventListener>();
     }
-    
-    public void addListener(StatusEventListener s){
+
+    public void addListener(StatusEventListener s) {
         listeners.add(s);
     }
-    
-    public void fire(String message){
-        for(StatusEventListener o: listeners){
+
+    public void fire(String message) {
+        for (StatusEventListener o : listeners) {
             o.actionPerformed(message);
         }
     }

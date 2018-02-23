@@ -8,27 +8,30 @@
  */
 
 package com.mohdali.apd.lib;
+
 import java.util.ArrayList;
+
 /**
  *
  * @author Ali
  */
 public class UpdateEvent {
-    
+
     private ArrayList<UpdateEventListener> listeners;
+
     /** Creates a new instance of UpdateEvent */
     public UpdateEvent() {
-        listeners=new ArrayList<UpdateEventListener>();
+        listeners = new ArrayList<UpdateEventListener>();
     }
-    
-    public void addListener(UpdateEventListener s){
+
+    public void addListener(UpdateEventListener s) {
         listeners.add(s);
     }
-    
-    public void fire(){
-        for(UpdateEventListener o: listeners){
+
+    public void fire() {
+        for (UpdateEventListener o : listeners) {
             o.actionPerformed();
         }
     }
-    
+
 }

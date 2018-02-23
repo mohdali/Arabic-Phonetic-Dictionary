@@ -14,6 +14,7 @@ package com.mohdali.apd.lib;
  * @author Ali
  */
 public interface ProgressEventListener {
-    public void actionPerformed(String message,int value);
+    public void actionPerformed(String message, int value);
+
     public void setMaximum(int value);
 }

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class CharacterClasses {
+public class CharacterClassesParser {
     private static Map<String, String> classes = new TreeMap<String, String>();
     private static Map<String, Character> charMap;
 
@@ -29,7 +29,7 @@ public class CharacterClasses {
         return classes;
     }
 
-    public static void parseFile(InputStream fin) {
+    private static void parseFile(InputStream fin) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
             String str = reader.readLine();

@@ -12,7 +12,7 @@ import java.util.TreeMap;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class Rules {
+public class RuleParser {
     private static Map<String, ArrayList<Rule>> rules = new TreeMap<String, ArrayList<Rule>>();
     private static Map<String, Character> charMap;
     private static Map<String, String> classes;
@@ -30,7 +30,7 @@ public class Rules {
         return rules;
     }
 
-    public static void parseFile(InputStream fin) {
+    private static void parseFile(InputStream fin) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
             String str = reader.readLine();
