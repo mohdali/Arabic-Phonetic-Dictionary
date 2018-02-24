@@ -4,11 +4,13 @@ Use this utility to generate [Phonetic Dictionaries](https://cmusphinx.github.io
 
 The dictionary is designed to work mainly with the [CMUSphinx](https://cmusphinx.github.io/) platform.
 
-
-The tool was developed in Java. Use Below command to build the jar file.
+Use Below command to build the jar file.
 
 ```
 mvn clean compile assembly:single
 ```
-
 Then execute the built jar file from the target directory.
+
+**Note:** The tool was developed in Java back in 2006 as part of academic research.
+Releasing the code to the public domain due to the renewed interest in the subject.
+Updates are for maintenance purpose only. No current plans to add more features.
