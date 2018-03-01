@@ -14,3 +14,5 @@ Then execute the built jar file from the target directory.
 **Note:** The tool was developed in Java back in 2006 as part of academic research.
 Releasing the code to the public domain due to the renewed interest in the subject.
 Updates are for maintenance purpose only. No current plans to add more features.
+
+**Acknowledgment:** Thanks for [Dr. Moustafa ElShafei](http://www.ccse.kfupm.edu.sa/~elshafei/) for his continuous guidance and support.
