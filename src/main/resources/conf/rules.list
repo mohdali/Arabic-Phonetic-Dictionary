@@ -124,7 +124,7 @@ KASRA:
 	(?<!<PH>).(?=YEH<V>)-> IH
 	(?<=<PH>).(?=YEH<V>)-> IX
 	(?<!<PH>).(?=YEH (<L>|<T>))-> IY
-        (?<=<PH>).(?=YEH (<L>|<T>))-> IX:
+	(?<=<PH>).(?=YEH (<L>|<T>))-> IX:
 SHADDA:
 	.-> *
 SUKUN:
