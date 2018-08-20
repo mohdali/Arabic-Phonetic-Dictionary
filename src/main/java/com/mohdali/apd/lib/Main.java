@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class Main {
-    private static Map<String, PhoneticDictionaryEntry> dict;
+    private static PhoneticDictionary dict;
     private static Pattern pattern;
     public static StatusEvent statusEvent = new StatusEvent();
     public static ProgressEvent progressEvent = new ProgressEvent();
@@ -50,7 +50,7 @@ public class Main {
         RuleEngine.setCharClasses(classes);
         Map<String, ArrayList<Rule>> rules = RuleParser.get();
         RuleEngine.setRules(rules);
-        dict = new TreeMap<String, PhoneticDictionaryEntry>();
+        dict = new PhoneticDictionary();
         RuleEngine.setDictionary(dict);
     }
 
@@ -100,7 +100,7 @@ public class Main {
                     if (dict.containsKey(s))
                         e = dict.get(s);
                     else
-                        dict.put(s, e);
+                        dict.put(e);
                     e.addDefinition(def);
                 }
                 str = reader.readLine();
@@ -118,7 +118,7 @@ public class Main {
     }
 
     public static void clearDict() {
-        dict = new TreeMap<String, PhoneticDictionaryEntry>();
+        dict = new PhoneticDictionary();
         RuleEngine.setDictionary(dict);
     }
 

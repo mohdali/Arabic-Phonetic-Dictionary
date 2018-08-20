@@ -8,17 +8,17 @@ public class RuleEngine
     private static Map<String, String> classes;
     private static Map<String, Character> charMap;
     private static Map<String, ArrayList<Rule>> rules;
-    private static Map<String, PhoneticDictionaryEntry> dictionary;
+    private static PhoneticDictionary dictionary;
 
     private RuleEngine() {
 
     }
 
-    public static Map<String, PhoneticDictionaryEntry> getDictionary() {
+    public static PhoneticDictionary getDictionary() {
         return dictionary;
     }
 
-    public static void setDictionary(Map<String, PhoneticDictionaryEntry> dictionary) {
+    public static void setDictionary(PhoneticDictionary dictionary) {
         RuleEngine.dictionary = dictionary;
     }
 
