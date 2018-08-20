@@ -29,8 +29,7 @@ public class DictionaryUpdateListener implements UpdateEventListener {
     }
 
     public void actionPerformed() {
-        Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine
-                .getProperty("Dictionary");
+        Map<String, PhoneticDictionaryEntry> dict = RuleEngine.getDictionary();                
         if (dict != null) {
             frame.entryDefField.setText("");
             frame.dictionaryEntryField.setText("");

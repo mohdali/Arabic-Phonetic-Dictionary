@@ -25,7 +25,7 @@ public class Main {
     public static boolean stopThreads = false;
 
     public static void importFiles(File dir, String encoding) {
-        dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine.getProperty("Dictionary");
+        dict = RuleEngine.getDictionary();
         File[] files = dir.listFiles();
         statusEvent.fire("Loading Files");
         progressEvent.setMaximum(getNumFiles(dir));
@@ -36,7 +36,7 @@ public class Main {
                 parseFile(f, encoding);
             }
         }
-        RuleEngine.setProperty("Dictionary", dict);
+        RuleEngine.setDictionary(dict);
         statusEvent.fire("Done");
         updateEvent.fire();
 
@@ -44,14 +44,14 @@ public class Main {
 
     public static void loadConfig() {
         Map<String, Character> map = CharacterMapParser.get();
-        RuleEngine.setProperty("CharMap", map);
+        RuleEngine.setCharMap(map);
         Map<String, String> classes = CharacterClassParser.get();
         pattern = Pattern.compile("(" + classes.get("D") + "|" + classes.get("L") + ")+");
-        RuleEngine.setProperty("Classes", classes);
+        RuleEngine.setCharClasses(classes);
         Map<String, ArrayList<Rule>> rules = RuleParser.get();
-        RuleEngine.setProperty("Rules", rules);
+        RuleEngine.setRules(rules);
         dict = new TreeMap<String, PhoneticDictionaryEntry>();
-        RuleEngine.setProperty("Dictionary", dict);
+        RuleEngine.setDictionary(dict);
     }
 
     public static int getNumFiles(File dir) {
@@ -59,7 +59,7 @@ public class Main {
     }
 
     public static void parseFile(File f, String encoding) {
-        dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine.getProperty("Dictionary");
+        dict = RuleEngine.getDictionary();
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f), encoding));
             String str = reader.readLine();
@@ -82,12 +82,12 @@ public class Main {
     }
 
     public static void readDict(File f, String encoding) {
-        dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine.getProperty("Dictionary");
+        dict = RuleEngine.getDictionary();
         try {
             statusEvent.fire("Loading Dictionary: " + f.getPath());
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f), encoding));
             String str = reader.readLine();
-            Map<String, String> classes = (Map<String, String>) RuleEngine.getProperty("Classes");
+            Map<String, String> classes = RuleEngine.getCharClasses();
             Pattern p = Pattern
                     .compile("^([" + classes.get("D") + classes.get("L") + "]+)(?:\\([0-9]{1,2}\\))?[ \t]+(.*)$");
 
@@ -119,11 +119,11 @@ public class Main {
 
     public static void clearDict() {
         dict = new TreeMap<String, PhoneticDictionaryEntry>();
-        RuleEngine.setProperty("Dictionary", dict);
+        RuleEngine.setDictionary(dict);
     }
 
     public static void writeDict(File f, String encoding) {
-        dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine.getProperty("Dictionary");
+        dict = RuleEngine.getDictionary();
         try {
             PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(f), encoding));
             for (PhoneticDictionaryEntry e : dict.values()) {

@@ -58,7 +58,7 @@ public class DictionaryListModel extends javax.swing.AbstractListModel<String> i
                 break;
             }
         }
-        dict.remove(e);
+        dict.remove(e.getKey());
         keyArray = dict.keySet().toArray(new String[0]);
         fireIntervalRemoved(this, i, i);
     }

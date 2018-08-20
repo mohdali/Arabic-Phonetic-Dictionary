@@ -23,8 +23,8 @@ public class RuleParser {
     private static Pattern ruleLetter = Pattern.compile("^(" + letter.pattern() + "):");
 
     public static Map<String, ArrayList<Rule>> get() {
-        charMap = (Map<String, Character>) RuleEngine.getProperty("CharMap");
-        classes = (Map<String, String>) RuleEngine.getProperty("Classes");
+        charMap = RuleEngine.getCharMap();
+        classes = RuleEngine.getCharClasses();
         InputStream fin = FileManager.read("rules.list");
         parseFile(fin);
         return rules;

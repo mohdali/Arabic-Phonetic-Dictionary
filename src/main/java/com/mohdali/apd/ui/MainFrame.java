@@ -412,8 +412,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         private void openDictionaryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openDictionaryItemActionPerformed
 
-                Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine
-                                .getProperty("Dictionary");
+                Map<String, PhoneticDictionaryEntry> dict = RuleEngine.getDictionary();
                 if (!dict.isEmpty() && !isSaved) {
                         int val = javax.swing.JOptionPane.showOptionDialog(this,
                                         "Current Dictionary not saved. Do you want to save?", "Warning",
@@ -439,8 +438,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         private void newDictionaryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDictionaryItemActionPerformed
 
-                Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine
-                                .getProperty("Dictionary");
+                Map<String, PhoneticDictionaryEntry> dict = RuleEngine.getDictionary();
                 if (!dict.isEmpty() && !isSaved) {
                         int val = javax.swing.JOptionPane.showOptionDialog(this,
                                         "Current Dictionary not saved. Do you want to save?", "Warning",
@@ -474,8 +472,7 @@ public class MainFrame extends javax.swing.JFrame {
                 if (dictionaryList.getSelectedIndex() != -1) {
                         String key = dictionaryList.getSelectedValue();
                         dictionaryEntryField.setText(key);
-                        Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine
-                                        .getProperty("Dictionary");
+                        Map<String, PhoneticDictionaryEntry> dict = RuleEngine.getDictionary();
                         PhoneticDictionaryEntry e = dict.get(key);
                         ArrayList<String> list = e.getDefinitions();
                         entryDefField.setText("");

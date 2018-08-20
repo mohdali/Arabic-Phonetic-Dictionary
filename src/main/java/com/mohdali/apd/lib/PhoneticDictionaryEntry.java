@@ -1,6 +1,4 @@
 package com.mohdali.apd.lib;
-
-import java.lang.annotation.Inherited;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -28,9 +26,9 @@ public class PhoneticDictionaryEntry implements Comparable<PhoneticDictionaryEnt
     private String key;
     private ArrayList<String> definitions;
 
-    private Map<String, Character> charMap = (Map<String, Character>) RuleEngine.getProperty("CharMap");
-    private Map<String, String> classes = (Map<String, String>) RuleEngine.getProperty("Classes");
-    private Map<String, ArrayList<Rule>> rules = (Map<String, ArrayList<Rule>>) RuleEngine.getProperty("Rules");
+    private Map<String, Character> charMap = RuleEngine.getCharMap();
+    private Map<String, String> classes = RuleEngine.getCharClasses();
+    private Map<String, ArrayList<Rule>> rules = RuleEngine.getRules();
 
     public PhoneticDictionaryEntry(String key) {
         this.key = key;
