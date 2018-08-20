@@ -477,7 +477,7 @@ public class MainFrame extends javax.swing.JFrame {
                         Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) ConfigManager
                                         .getProperty("Dictionary");
                         PhoneticDictionaryEntry e = dict.get(key);
-                        ArrayList<String> list = e.getDefs();
+                        ArrayList<String> list = e.getDefinitions();
                         entryDefField.setText("");
                         for (String def : list) {
                                 entryDefField.setText(entryDefField.getText() + def + "\n");

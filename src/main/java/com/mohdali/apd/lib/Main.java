@@ -69,7 +69,7 @@ public class Main {
                     String s = matcher.group();
                     PhoneticDictionaryEntry e = new PhoneticDictionaryEntry(s);
                     if (e.isValid()) {
-                        e.generateDefs();
+                        e.generateDefinitions();
                         dict.put(s, e);
                     }
                 }
@@ -101,7 +101,7 @@ public class Main {
                         e = dict.get(s);
                     else
                         dict.put(s, e);
-                    e.addDef(def);
+                    e.addDefinition(def);
                 }
                 str = reader.readLine();
             }
