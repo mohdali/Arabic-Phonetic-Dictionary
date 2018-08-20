@@ -10,7 +10,7 @@
 package com.mohdali.apd.ui;
 
 
-import com.mohdali.apd.lib.ConfigManager;
+import com.mohdali.apd.lib.RuleEngine;
 import com.mohdali.apd.lib.PhoneticDictionaryEntry;
 import com.mohdali.apd.lib.UpdateEventListener;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class DictionaryUpdateListener implements UpdateEventListener {
     }
 
     public void actionPerformed() {
-        Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) ConfigManager
+        Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine
                 .getProperty("Dictionary");
         if (dict != null) {
             frame.entryDefField.setText("");

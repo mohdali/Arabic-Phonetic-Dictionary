@@ -23,7 +23,7 @@ public class CharacterClassParser {
             .compile("^[ \\t]*" + className.pattern() + "[ \\t]*(" + classDef.pattern() + ")$");
 
     public static Map<String, String> get() {
-        charMap = (Map<String, Character>) ConfigManager.getProperty("CharMap");
+        charMap = (Map<String, Character>) RuleEngine.getProperty("CharMap");
         InputStream fin = FileManager.read("classes.list");
         parseFile(fin);
         return classes;

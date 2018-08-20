@@ -28,9 +28,9 @@ public class PhoneticDictionaryEntry implements Comparable<PhoneticDictionaryEnt
     private String key;
     private ArrayList<String> definitions;
 
-    private Map<String, Character> charMap = (Map<String, Character>) ConfigManager.getProperty("CharMap");
-    private Map<String, String> classes = (Map<String, String>) ConfigManager.getProperty("Classes");
-    private Map<String, ArrayList<Rule>> rules = (Map<String, ArrayList<Rule>>) ConfigManager.getProperty("Rules");
+    private Map<String, Character> charMap = (Map<String, Character>) RuleEngine.getProperty("CharMap");
+    private Map<String, String> classes = (Map<String, String>) RuleEngine.getProperty("Classes");
+    private Map<String, ArrayList<Rule>> rules = (Map<String, ArrayList<Rule>>) RuleEngine.getProperty("Rules");
 
     public PhoneticDictionaryEntry(String key) {
         this.key = key;

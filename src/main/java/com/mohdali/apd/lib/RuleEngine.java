@@ -2,7 +2,7 @@ package com.mohdali.apd.lib;
 
 import java.util.HashMap;
 
-public class ConfigManager
+public class RuleEngine
 {
     private static HashMap<String,Object> config = new HashMap<String,Object>();
 

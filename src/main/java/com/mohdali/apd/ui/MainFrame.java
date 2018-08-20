@@ -7,7 +7,7 @@
 package com.mohdali.apd.ui;
 
 import java.util.Map;
-import com.mohdali.apd.lib.ConfigManager;
+import com.mohdali.apd.lib.RuleEngine;
 import com.mohdali.apd.lib.Main;
 import com.mohdali.apd.lib.PhoneticDictionaryEntry;
 import java.util.ArrayList;
@@ -412,7 +412,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         private void openDictionaryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openDictionaryItemActionPerformed
 
-                Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) ConfigManager
+                Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine
                                 .getProperty("Dictionary");
                 if (!dict.isEmpty() && !isSaved) {
                         int val = javax.swing.JOptionPane.showOptionDialog(this,
@@ -439,7 +439,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         private void newDictionaryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDictionaryItemActionPerformed
 
-                Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) ConfigManager
+                Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine
                                 .getProperty("Dictionary");
                 if (!dict.isEmpty() && !isSaved) {
                         int val = javax.swing.JOptionPane.showOptionDialog(this,
@@ -474,7 +474,7 @@ public class MainFrame extends javax.swing.JFrame {
                 if (dictionaryList.getSelectedIndex() != -1) {
                         String key = dictionaryList.getSelectedValue();
                         dictionaryEntryField.setText(key);
-                        Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) ConfigManager
+                        Map<String, PhoneticDictionaryEntry> dict = (Map<String, PhoneticDictionaryEntry>) RuleEngine
                                         .getProperty("Dictionary");
                         PhoneticDictionaryEntry e = dict.get(key);
                         ArrayList<String> list = e.getDefinitions();
