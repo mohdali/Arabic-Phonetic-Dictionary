@@ -85,25 +85,9 @@ public class Main {
         try {
             statusEvent.fire("Loading Dictionary: " + f.getPath());
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f), encoding));
-            String str = reader.readLine();
-            Map<String, String> classes = RuleEngine.getCharClasses();
-            Pattern p = Pattern
-                    .compile("^([" + classes.get("D") + classes.get("L") + "]+)(?:\\([0-9]{1,2}\\))?[ \t]+(.*)$");
 
-            while (str != null) {
-                Matcher matcher = p.matcher(str);
-                while (matcher.find()) {
-                    String s = matcher.group(1);
-                    String def = matcher.group(2);
-                    PhoneticDictionaryEntry e = new PhoneticDictionaryEntry(s);
-                    if (dict.containsKey(s))
-                        e = dict.get(s);
-                    else
-                        dict.put(e);
-                    e.addDefinition(def);
-                }
-                str = reader.readLine();
-            }
+            PhoneticDictionary.ParseInput(reader, dict);
+            
             reader.close();
             statusEvent.fire("Done, loaded " + dict.size() + " entries");
             updateEvent.fire();
@@ -117,17 +101,17 @@ public class Main {
     }
 
     public static void clearDict() {
-        dict = new PhoneticDictionary();
-        RuleEngine.setDictionary(dict);
+        RuleEngine.clearDictionary();
     }
 
-    public static void writeDict(File f, String encoding) {
+    public static void writeToFile(File f, String encoding) {
         dict = RuleEngine.getDictionary();
         try {
+
             PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(f), encoding));
-            for (PhoneticDictionaryEntry e : dict.values()) {
-                writer.print(e);
-            }
+
+            dict.writeTo(writer);
+
             writer.close();
         } catch (IOException e) {
         }

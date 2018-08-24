@@ -3,15 +3,14 @@ package com.mohdali.apd.lib;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class RuleEngine
-{
+public class RuleEngine {
     private static Map<String, String> classes;
     private static Map<String, Character> charMap;
     private static Map<String, ArrayList<Rule>> rules;
     private static PhoneticDictionary dictionary;
 
     private RuleEngine() {
-
+        dictionary = new PhoneticDictionary();
     }
 
     public static PhoneticDictionary getDictionary() {
@@ -19,7 +18,15 @@ public class RuleEngine
     }
 
     public static void setDictionary(PhoneticDictionary dictionary) {
-        RuleEngine.dictionary = dictionary;
+        if (dictionary != null) {
+            RuleEngine.dictionary = dictionary;
+        }
+    }
+
+    public static void clearDictionary() {
+        if (dictionary != null) {
+            dictionary.clear();
+        }
     }
 
     public static Map<String, ArrayList<Rule>> getRules() {
@@ -30,7 +37,7 @@ public class RuleEngine
         RuleEngine.rules = rules;
     }
 
-    public static Map<String,String> getCharClasses() {
+    public static Map<String, String> getCharClasses() {
         return classes;
     }
 

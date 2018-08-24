@@ -527,7 +527,7 @@ public class MainFrame extends javax.swing.JFrame {
                 if (value == javax.swing.JFileChooser.APPROVE_OPTION) {
                         new Thread(new Runnable() {
                                 public void run() {
-                                        Main.writeDict(saveDictionary.getSelectedFile(), encoding);
+                                        Main.writeToFile(saveDictionary.getSelectedFile(), encoding);
                                 }
                         }).start();
                 }
