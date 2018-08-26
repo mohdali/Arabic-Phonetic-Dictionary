@@ -68,7 +68,7 @@ public class Main {
                     String s = matcher.group();
                     PhoneticDictionaryEntry e = new PhoneticDictionaryEntry(s);
                     if (e.isValid()) {
-                        e.generateDefinitions();
+                        e.setDefinitions(RuleEngine.generateDefinitions(s));
                         dict.put(s, e);
                     }
                 }
