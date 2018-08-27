@@ -55,59 +55,74 @@ public class RuleEngine {
     }
 
     public static ArrayList<String> generateDefinitions(String key) {
-        ArrayList<String> definitions = new ArrayList<String>();
-
         String[][] map = new String[key.length()][];
+
         for (int i = 0; i < key.length(); i++) {
             char c = key.charAt(i);
             for (Entry<String, Character> e : charMap.entrySet()) {
                 if (c == e.getValue()) {
-                    ArrayList<Rule> p = rules.get(e.getKey());
-                    ArrayList<String> r = new ArrayList<String>();
-                    for (Rule rule : p) {
+
+                    ArrayList<Rule> charRules = rules.get(e.getKey());
+                    ArrayList<String> replacements = new ArrayList<String>();
+
+                    for (Rule rule : charRules) {
                         if (rule.applies(key, i)) {
-                            r.add(rule.replacement);
+                            replacements.add(rule.replacement);
                         }
                     }
-                    Object[] o = r.toArray();
-                    if (o.length > 0) {
-                        map[i] = new String[o.length];
+
+                    if (replacements.size() > 0) {
+                        map[i] = new String[replacements.size()];
                         int j = 0;
-                        for (Object s : o)
-                            map[i][j++] = (String) s;
-                    } else
+                        for (String s : replacements)
+                            map[i][j++] = s;
+                    } else {
                         map[i] = new String[] { "" };
+                    }
                     break;
                 }
             }
         }
-        
-        searchMap(key, definitions, map);
-
-        return definitions;
+        return searchMap(map);
     }
 
-    private static void searchMap(String key, ArrayList<String> definitions, String[][] map) {
-        int l = key.length();
+    private static ArrayList<String> searchMap(String[][] map) {
+
+        ArrayList<String> definitions = new ArrayList<String>();
+
+        int l = map.length;
+
         String[] v = new String[l];
+
         int[] i = new int[l];
+
         for (int j = 0; j < l; j++)
             i[j] = 0;
+
         int k = 0;
+
         while (k >= 0) {
             while (i[k] < map[k].length) {
                 v[k] = map[k][i[k]];
                 i[k]++;
+
                 if (k == l - 1) {
                     StringBuffer buff = new StringBuffer();
+
                     for (String m : v)
                         buff.append(m + (!m.equals("") ? " " : ""));
+
                     definitions.add(buff.toString().trim());
-                } else
+                } else {
                     k++;
+                }
             }
+
             i[k] = 0;
+
             k--;
         }
+
+        return definitions;
     }
 }
