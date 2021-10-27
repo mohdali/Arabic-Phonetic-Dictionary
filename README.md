@@ -11,6 +11,10 @@ mvn clean compile assembly:single
 ```
 Then execute the built jar file from the target directory.
 
+```
+java -jar .\target\ArabicPhoneticDictionary-0.5.jar 
+```
+
 **Note:** The tool was developed in Java back in 2006 as part of academic research.
 Releasing the code to the public domain due to the renewed interest in the subject.
 Updates are for maintenance purpose only. No current plans to add more features.
